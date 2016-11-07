@@ -1,0 +1,115 @@
+<app-card title="{{event.title}}" cardClass="with-scroll">
+  <h6 class="card-subtitle text-muted">
+    <i class="fa fa-calendar-o fa-fw text-primary"></i>
+    {{event.date}}
+  </h6>
+  <div class="list-group list-group-flush">
+    <div class="list-group-item">
+      <p class="card-text">
+        {{event.description}}
+      </p>
+      <p *ngIf="isDetail" class="card-text">
+        <strong>Event Contact:</strong> {{event.contactFName}} {{event.contactLName}}
+      </p>
+    </div>
+    <a *ngIf="isDetail" href="tel:+{{event.phoneNumber}}" class="list-group-item">
+      <i class="fa fa-phone fa-fw text-primary"></i>
+      {{event.phoneNumber}}
+    </a>
+    <div *ngIf="isDetail" class="list-group-item">
+      <i class="fa fa-map-marker fa-fw text-primary"></i>
+      {{event.address.streetAddress}} {{event.address.city}}, {{event.address.state}} {{event.address.zip}}
+    </div>
+    <a *ngIf="isDetail"
+       href="http://maps.google.com/?q={{event.address.streetAddress}} {{event.address.city}}, {{event.address.state}} {{event.address.zip}}"
+       class="list-group-item"
+       target="_blank">
+      <img src="http://maps.googleapis.com/maps/api/staticmap?center={{event.address.state}}&size=640x300&&scale=2&format=jpg&zoom=15&maptype=roadmap&markers=color:blue%7Clabel:S%7C11211%7C11206%7C11222&key=AIzaSyCNDwPJWHjhxWPFpbFdSo8KB5hGj3q0wKA" class="img-fluid" />
+    </a>
+    <a *ngIf="!isDetail" href="http://maps.google.com/?q={{event.address.streetAddress}}+{{event.address.city}}+{{event.address.state}}+{{event.address.zip}}" target="_blank" class="list-group-item">
+      <i class="fa fa-map-marker fa-fw"></i>
+      {{event.address.streetAddress}} {{event.address.city}}, {{event.address.state}} {{event.address.zip}}
+    </a>
+    <div class="list-group-item">
+      <span class="addtocalendar atc-style-blue">
+        <var class="atc_event">
+            <var class="atc_date_start">2016-05-04 12:00:00</var>
+            <var class="atc_date_end">2016-05-04 18:00:00</var>
+            <var class="atc_timezone">Europe/London</var>
+            <var class="atc_title">Star Wars Day Party</var>
+            <var class="atc_description">May the force be with you</var>
+            <var class="atc_location">Tatooine</var>
+            <var class="atc_organizer">Luke Skywalker</var>
+            <var class="atc_organizer_email">luke@starwars.com</var>
+        </var>
+    </span>
+    </div>
+    <a *ngIf="!isDetail" [routerLink]="['./', event.id]" class="list-group-item">
+      <i class="fa fa-arrow-right fa-fw"></i>
+      View Event
+    </a>
+    <a [routerLink]="['../recap', event.id]" class="list-group-item" [class.list-group-item-success]="isDetail">
+      <i class="fa fa-plus fa-fw"></i>
+      Add a Recap
+    </a>
+  </div>
+</app-card>
+
+
+<!--<div class="card">
+  <div class="card-block">
+    <h4 class="card-title"><small>{{event.title}}</small></h4>
+    <h6 class="card-subtitle text-muted">
+      <i class="fa fa-calendar-o fa-fw text-primary"></i>
+      {{event.date}}
+    </h6>
+  </div>
+  <div class="list-group list-group-flush">
+    <div class="list-group-item">
+      <p class="card-text">
+        {{event.description}}
+      </p>
+      <p *ngIf="isDetail" class="card-text">
+        <strong>Event Contact:</strong> {{event.contactFName}} {{event.contactLName}}
+      </p>
+    </div>
+    <a *ngIf="isDetail" href="tel:+{{event.phoneNumber}}" class="list-group-item">
+      <i class="fa fa-phone fa-fw text-primary"></i>
+      {{event.phoneNumber}}
+    </a>
+    <div *ngIf="isDetail" class="list-group-item">
+      <i class="fa fa-map-marker fa-fw text-primary"></i>
+      {{event.address.streetAddress}} {{event.address.city}}, {{event.address.state}} {{event.address.zip}}
+    </div>
+    <a *ngIf="isDetail"
+       href="http://maps.google.com/?q={{event.address.streetAddress}} {{event.address.city}}, {{event.address.state}} {{event.address.zip}}"
+       class="list-group-item"
+       target="_blank">
+      <img src="http://maps.googleapis.com/maps/api/staticmap?center={{event.address.state}}&size=640x300&&scale=2&format=jpg&zoom=15&maptype=roadmap&markers=color:blue%7Clabel:S%7C11211%7C11206%7C11222&key=AIzaSyCNDwPJWHjhxWPFpbFdSo8KB5hGj3q0wKA" class="img-fluid" />
+    </a>
+    <a *ngIf="!isDetail" href="http://maps.google.com/?q={{event.address.streetAddress}}+{{event.address.city}}+{{event.address.state}}+{{event.address.zip}}" target="_blank" class="list-group-item">
+      <i class="fa fa-map-marker fa-fw"></i>
+      {{event.address.streetAddress}} {{event.address.city}}, {{event.address.state}} {{event.address.zip}}
+    </a>
+    <div class="list-group-item">
+      <div title="Add to Calendar" class="addeventatc">
+        Add to Calendar
+        <span class="start">05/05/2016 08:00 AM</span>
+        <span class="end">05/05/2017 10:00 AM</span>
+        <span class="timezone">America/New_York</span>
+        <span class="title">Summary of the event</span>
+        <span class="description">Description of the event</span>
+        <span class="location">Location of the event</span>
+        <span class="date_format">MM/DD/YYYY</span>
+      </div>
+    </div>
+    <a *ngIf="!isDetail" [routerLink]="['./', event.id]" class="list-group-item">
+      <i class="fa fa-arrow-right fa-fw"></i>
+      View Event
+    </a>
+    <a [routerLink]="['../recap', event.id]" class="list-group-item" [class.list-group-item-success]="isDetail">
+      <i class="fa fa-plus fa-fw"></i>
+      Add a Recap
+    </a>
+  </div>
+</div>-->

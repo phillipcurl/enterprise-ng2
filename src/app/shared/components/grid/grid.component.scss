@@ -1,0 +1,56 @@
+td {
+  padding: 0;
+}
+td div {
+   padding: 0.75rem;
+   min-height: 20px;
+   transition: all 0.3s ease-out;
+}
+
+td > div > a, i {
+  // font-weight: 700;
+  &:hover {
+    cursor: pointer;
+    color: red;
+    text-decoration: none;
+  }
+}
+
+.bg-success {
+    color: #3c763d !important;
+    background-color: #dff0d8 !important;
+    animation: fadeout 2s forwards;
+    animation-delay: 2s;
+    -moz-animation: fadeout 2s forwards;
+    -moz-animation-delay: 2s;
+    -webkit-animation: fadeout 2s forwards;
+    -webkit-animation-delay: 2s;
+    -o-animation: fadeout 2s forwards;
+    -o-animation-delay: 2s;
+}
+
+@keyframes fadeout {
+    to {
+        background-color: inherit;
+        color: inherit;
+    }
+
+}
+@-moz-keyframes fadeout {
+    to {
+        background-color: inherit;
+        color: inherit;
+    }
+}
+@-webkit-keyframes fadeout {
+    to {
+        background-color: inherit;
+        color: inherit;
+    }
+}
+@-o-keyframes fadeout {
+    to {
+        background-color: inherit;
+        color: inherit;
+    }
+}

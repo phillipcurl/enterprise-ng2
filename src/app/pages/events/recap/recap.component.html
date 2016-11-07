@@ -1,0 +1,17 @@
+<recap-info *ngIf="recapState.state.currentStep === 'info' || 
+                  recapState.state.currentStep === 'products' || 
+                  recapState.state.currentStep === 'feedback' || 
+                  recapState.state.currentStep === 'summary'">
+</recap-info>
+
+<recap-products *ngIf="recapState.state.currentStep === 'products' || 
+                      recapState.state.currentStep === 'feedback' || 
+                      recapState.state.currentStep === 'summary'">
+</recap-products>
+
+<recap-feedback *ngIf="recapState.state.currentStep === 'feedback' || 
+                      recapState.state.currentStep === 'summary'">
+</recap-feedback>
+
+<recap-summary *ngIf="recapState.state.currentStep === 'summary'">
+</recap-summary>

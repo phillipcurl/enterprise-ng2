@@ -1,0 +1,67 @@
+<h4><small class="text-muted">2/4</small> Add Products</h4>
+
+<form (submit)="addProduct()">
+  <input [(ngModel)]="newProductName" [ngModelOptions]="{standalone: true}" placeholder="Product Demonstrated">
+    <span md-prefix>
+      <i class="material-icons app-input-icon">motorcycle</i>
+      &nbsp;
+    </span>
+  
+  <input [(ngModel)]="newProductSample" [ngModelOptions]="{standalone: true}" placeholder="Samples Poured">
+    <span md-prefix>
+      <i class="material-icons app-input-icon">motorcycle</i>
+      &nbsp;
+    </span>
+  
+  <input [(ngModel)]="newProductSold" [ngModelOptions]="{standalone: true}" placeholder="Bottles Sold">
+    <span md-prefix>
+      <i class="material-icons app-input-icon">motorcycle</i>
+      &nbsp;
+    </span>
+  
+  <input [(ngModel)]="newProductRegularPrice" [ngModelOptions]="{standalone: true}" placeholder="Regular Price">
+    <span md-prefix>
+      <i class="material-icons app-input-icon">motorcycle</i>
+      &nbsp;
+    </span>
+  
+  <input [(ngModel)]="newProductDemoPrice" [ngModelOptions]="{standalone: true}" placeholder="Demo Price">
+    <span md-prefix>
+      <i class="material-icons app-input-icon">motorcycle</i>
+      &nbsp;
+    </span>
+  
+  <button type="submit" md-raised-button color="primary">Add</button>
+</form>
+
+<!--<h5>Products</h5>-->
+<table *ngIf="userProducts.length > 0" class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+  <thead>
+    <tr>
+      <th class="mdl-data-table__cell--non-numeric">Product Demonstrated</th>
+      <th># of Samples Poured</th>
+      <th># of Bottles Sold</th>
+      <th>Regular Price</th>
+      <th>Demo Price</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of userProducts; let idx = index">
+      <td class="mdl-data-table__cell--non-numeric">{{product.name}}</td>
+      <td>{{product.samplesPoured}}</td>
+      <td>{{product.bottlesSold}}</td>
+      <td>{{product.regularPrice | currency:'USD':true:'2.2-2'}}</td>
+      <td>{{product.demoPrice | currency:'USD':true:'2.2-2'}}</td>
+      <td><i (click)="deleteProduct(idx)" class="fa fa-trash-o fa-fw text-xs-center"></i></td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="userProducts.length === 0" class="alert alert-info">
+  <strong><i class="fa fa-question-circle-o"></i> Please add a product</strong>
+</div>
+
+<div class="list-group-item">
+  <button (click)="showPrevious()" type="button"  md-raised-button color="accent">Go Back</button>
+  <button *ngIf="userProducts.length > 0" (click)="showNext()" type="button" md-raised-button color="primary">Next</button>
+</div>

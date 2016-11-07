@@ -1,0 +1,60 @@
+<!--
+@Author: Phillip Curl <PC>
+@Date:   2016-05-13T21:21:49-04:00
+@Email:  phillipcurl@gmail.com
+@Project: Libations-Portal
+@Last modified by:   Steven Coon
+@Last modified time: 2016-05-13T21:26:21-04:00
+-->
+
+<div id="wrapper" [class.toggled]="isClassVisible">
+
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <div class="sidebar-nav list-group list-group-flush">
+      <a (click)="isClassVisible = !isClassVisible;" class="list-group-item">
+        <i class="fa fa-exchange fa-fw m-r-1"></i>Manage Libations
+      </a>
+      <a [routerLink]="['./events']" class="list-group-item">
+        <i class="fa fa-calendar fa-fw m-r-1"></i>Events
+      </a>
+      <a [routerLink]="['./users']" class="list-group-item">
+        <i class="fa fa-users fa-fw m-r-1"></i>Users
+      </a>
+      <a [routerLink]="['./time']" class="list-group-item">
+        <i class="fa fa-clock-o fa-fw m-r-1"></i>Time Cards
+        <span class="label label-default label-pill pull-xs-right">14</span>
+      </a>
+      <a [routerLink]="['./brands']" class="list-group-item">
+        <i class="fa fa-users fa-fw m-r-1"></i>Brands
+      </a>
+      <a [routerLink]="['./locations']" class="list-group-item">
+        <i class="fa fa-users fa-fw m-r-1"></i>Locations
+      </a>
+      <a [routerLink]="['./clients']" class="list-group-item">
+        <i class="fa fa-users fa-fw m-r-1"></i>Clients
+      </a>
+      <a [routerLink]="['./campaigns']" class="list-group-item">
+        <i class="fa fa-users fa-fw m-r-1"></i>Campaigns
+      </a>
+      <div class="list-group-item list-group-footer">
+        <!--<h4 class="list-group-item-heading">List group item heading</h4>-->
+        <p class="list-group-item-text">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+        <i class="fa fa-question-circle-o"></i>
+      </div>
+    </div>
+  </div>
+  <!-- /#sidebar-wrapper -->
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <!--<button (click)="isClassVisible = !isClassVisible;" *ngIf="isClassVisible" type="button" class="fab">Toggle Menu</button>      -->
+    <div class="container-fluid p-y-1">
+      <div class="card">
+        <router-outlet></router-outlet>
+        </div>
+      </div> 
+    </div>
+    <!-- /#page-content-wrapper -->
+</div>
+<!-- /#wrapper -->

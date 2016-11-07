@@ -1,0 +1,22 @@
+<div class="card-block clearfix">
+  <h2 class="h3 pull-left">Manage Users</h2>
+  <div class="pull-right">
+    <button class="btn btn-primary-outline m-r-1"><i class="fa fa-plus"></i> Add User</button>  
+  </div>
+</div>
+<div class="list-group list-group-flush">
+  <app-loader *ngIf="isLoading"></app-loader>
+
+  <app-grid name="users grid"
+            [rows]="users"
+            [columns]="columns"
+            [isEditable]="true"
+            (objectUpdated)="saveObject($event);">
+  </app-grid>
+  
+  <app-alert *ngIf="errorMessage"
+            [message]="'Yo'"
+            [error]="errorMessage"
+            [context]="'warning'">
+  </app-alert>
+</div>

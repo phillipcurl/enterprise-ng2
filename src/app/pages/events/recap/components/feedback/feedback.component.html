@@ -1,0 +1,62 @@
+<!-- /**
+* @Author: Phillip Curl <philcurl>
+* @Date:   2016-04-18T09:01:46-04:00
+* @Email:  phillipcurl@gmail.com
+* @Project: Libations-Portal
+* @Last modified by:   philcurl
+* @Last modified time: 2016-04-23T23:18:51-04:00
+*/ -->
+
+<div class="list-group-item">
+  <h5><small class="text-muted">3/4</small> Event Feedback</h5>
+</div>
+<div class="list-group-item">
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="">Mail-In Rebates Distrubuted</label>
+        <div class="input-group">
+          <span class="input-group-addon">#</span>
+          <input [(ngModel)]="rebates" (ngModelChange)="recapState.setState('isDirty', true)" class="form-control" placeholder="5">
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="">Percentage Who Liked Sample</label>
+        <div class="input-group">
+          <input [(ngModel)]="percentLikes" (ngModelChange)="recapState.setState('isDirty', true)" class="form-control" placeholder="60">
+          <span class="input-group-addon">%</span>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12">
+      <div class="form-group">
+        <label for="">Is there a display or rack in the store?</label>
+        <textarea [(ngModel)]="display" (ngModelChange)="recapState.setState('isDirty', true)" class="form-control" id="" rows="2" placeholder="Yes, display near check out area of wine section complete with an animatronic cardboard woman talking about the product."></textarea>
+      </div>
+    </div>
+  </div>
+  <form (submit)="addComment()">
+    <div class="form-group">
+      <label for="">Top Five Favorable Comments</label>
+      <div *ngIf="userComments.length < 5" class="input-group">
+        <input [(ngModel)]="newComment" (ngModelChange)="recapState.setState('isDirty', true)" class="form-control" placeholder="“The Coconut is so refreshing!”">
+        <span class="input-group-btn">
+          <button class="btn btn-secondary" type="submit">Add</button>
+        </span>
+      </div>
+    </div>
+  </form>
+  <blockquote *ngFor="let comment of userComments" class="blockquote">
+    <p class="m-b-0">{{comment}}</p>
+  </blockquote>
+  <div class="form-group">
+    <label for="exampleTextarea">Additional Feedback</label>
+    <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+  </div>
+</div>
+<div class="list-group-item">
+  <button (click)="showPrevious()" type="button" class="btn btn-secondary">Go Back</button>
+  <button *ngIf="userComments.length >= 5"  (click)="showNext()" href="#recapHeader" type="button" class="btn btn-primary">Next</button>
+</div>

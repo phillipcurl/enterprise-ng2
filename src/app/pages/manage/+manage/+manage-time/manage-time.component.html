@@ -1,0 +1,27 @@
+<div class="container-fluid p-y-2">
+  <div class="card">
+    <div class="card-block clearfix">
+      <h2 class="h3 pull-left">Time Entry</h2>
+      <div class="pull-right">
+        <button class="btn btn-primary-outline m-r-1"><i class="fa fa-plus"></i> Add Time</button>  
+        <button class="btn btn-primary"><i class="fa fa-send"></i> Submit Time</button>  
+      </div>
+    </div>
+    <div class="list-group list-group-flush">
+      <app-loader *ngIf="isLoading"></app-loader>
+
+      <app-grid name="time grid"
+                [rows]="events"
+                [columns]="columns"
+                [isEditable]="true"
+                (objectUpdated)="saveObject($event);">
+      </app-grid>
+      
+      <app-alert *ngIf="errorMessage"
+                [message]="'Yo'"
+                [error]="errorMessage"
+                [context]="'warning'">
+      </app-alert>
+    </div>
+  </div>
+</div>

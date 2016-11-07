@@ -1,0 +1,54 @@
+{
+  "project": {
+    "version": "1.0.0-beta.17",
+    "name": "libations"
+  },
+  "apps": [
+    {
+      "root": "src",
+      "outDir": "dist",
+      "assets": "assets",
+      "index": "index.html",
+      "main": "main.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.json",
+      "prefix": "",
+      "mobile": false,
+      "styles": [
+        "../node_modules/fullcalendar/dist/fullcalendar.css",
+        "styles.scss"
+      ],
+      "scripts": [
+        "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/tether/dist/js/tether.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.js",
+        "../node_modules/jquery-slimscroll/jquery.slimscroll.js",
+        "../node_modules/moment/moment.js",
+        "../node_modules/fullcalendar/dist/fullcalendar.js",
+        "../node_modules/google-maps/lib/Google.min.js"
+      ],
+      "environments": {
+        "source": "environments/environment.ts",
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    }
+  ],
+  "addons": [],
+  "packages": [],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "scss",
+    "lazyRoutePrefix": "+",
+    "prefixInterfaces": false
+  }
+}

@@ -1,0 +1,117 @@
+// @Author: Phillip Curl <PC>
+// @Date:   2016-05-13T21:21:49-04:00
+// @Email:  phillipcurl@gmail.com
+// @Project: Libations-Portal
+// @Last modified by:   PC
+// @Last modified time: 2016-05-13T21:26:21-04:00
+
+@import './../shared/scss/variables';
+
+$border: 1px solid #999;
+/* Toggle Styles */
+#wrapper {
+  padding-left: 0;
+  transition: all 0.3s ease;
+}
+#wrapper.toggled {
+  padding-left: 250px;
+}
+#sidebar-wrapper {
+  z-index: 1000;
+  position: fixed;
+  left: 250px;
+  width: 55px;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background: #fff;
+  border-right: 1px solid #e1e1e1;
+  transition: all 0.3s ease;
+}
+#wrapper.toggled #sidebar-wrapper {
+  width: 250px;
+}
+
+#page-content-wrapper {
+  width: 100%;
+  position: absolute;
+  // padding: 15px;
+  padding-left: 55px;
+}
+#wrapper.toggled #page-content-wrapper {
+  position: absolute;
+  margin-right: -200px;
+  padding-left: 0;
+}
+/* Sidebar Styles */
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: 250px;
+  min-height: 100vh;
+  border-bottom: 1px solid #e1e1e1;
+
+  a.router-link-active {
+    color: $brand-primary;
+    font-weight: 700;
+  }
+  a:hover {
+   cursor: pointer;
+  }
+}
+
+.list-group-footer {
+  position: absolute;
+  bottom: 0;
+}
+
+#wrapper.toggled .list-group-footer {
+  display: none;
+}
+
+.fab {
+    position: fixed;
+    z-index: 1000;
+    bottom: 0;
+    right: 0;
+    margin: 30px;
+	  border:none;
+    font-size:1em;
+    color:white;
+    background-color: #ff4081;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    // margin: auto;
+    -webkit-box-shadow: 2px 3px 3px 0px rgba(41, 41, 41, .3);
+       -moz-box-shadow: 2px 3px 3px 0px rgba(41, 41, 41, .3);
+            box-shadow: 2px 3px 3px 0px rgba(41, 41, 41, .3);
+            
+  &:hover, &:active {
+    outline: none;
+    background-color: #ff4060;
+  }
+}
+
+@media(min-width:992px) {
+  #wrapper {
+    padding-left: 250px;
+  }
+  #wrapper.toggled {
+    padding-left: 55px;
+  }
+  #sidebar-wrapper {
+    width: 250px;
+  }
+  #wrapper.toggled #sidebar-wrapper {
+    width: 55px;
+  }
+  #page-content-wrapper {
+    padding-left: 0;
+    position: relative;
+  }
+  #wrapper.toggled #page-content-wrapper {
+    position: relative;
+    margin-right: 0;
+  }
+}

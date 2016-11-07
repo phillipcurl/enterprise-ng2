@@ -1,0 +1,117 @@
+<!-- /**
+* @Author: Phillip Curl <philcurl>
+* @Date:   2016-04-18T09:01:46-04:00
+* @Email:  phillipcurl@gmail.com
+* @Project: Libations-Portal
+* @Last modified by:   philcurl
+* @Last modified time: 2016-04-23T23:18:51-04:00
+*/ -->
+
+<div class="list-group-item">
+  <h5><small class="text-muted">4/4</small> Recap Summary</h5>
+</div>
+<div class="list-group-item p-y-1">
+  <h6>Event Info</h6>
+  <hr />
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group row">
+        <label class="col-md-3 form-control-label">Name</label>
+        <div class="col-md-9">
+          <p class="form-control-static">{{recapState.recap.employeeName}}</p>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 form-control-label">Date</label>
+        <div class="col-md-9">
+          <p class="form-control-static">{{recapState.recap.recapDate}}</p>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 form-control-label">Hours</label>
+        <div class="col-md-9">
+          <p class="form-control-static">{{recapState.recap.employeeHours}}</p>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 form-control-label">Demo Company</label>
+        <div class="col-md-9">
+          <p class="form-control-static">{{recapState.recap.demoCompany}}</p>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 form-control-label">Distributor</label>
+        <div class="col-md-9">
+          <p class="form-control-static">{{recapState.recap.distributor}}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group row">
+        <label class="col-md-3 form-control-label">Store Number</label>
+        <div class="col-md-9">
+          <p class="form-control-static">{{recapState.recap.storeNum}}</p>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 form-control-label">Store Address</label>
+        <div class="col-md-9">
+          <p class="form-control-static">{{recapState.recap.storeAddress}}</p>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 form-control-label">Store Contact</label>
+        <div class="col-md-9">
+          <p class="form-control-static">{{recapState.recap.storeContact}}</p>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-3 form-control-label">Demo Location</label>
+        <div class="col-md-9">
+          <p class="form-control-static">{{recapState.recap.demoLocation}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h6>Products</h6>
+  <hr />
+  <div class="row">
+    <div class="col-sm-12 table-responsive">
+      <table class="table table-striped table-hover table-sm">
+        <thead>
+          <tr>
+            <th>Product Demonstrated</th>
+            <th># of Samples Poured</th>
+            <th># of Bottles Sold</th>
+            <th>Regular Price</th>
+            <th>Demo Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of recapState.recap.products; let idx = index">
+            <td>{{product.name}}</td>
+            <td>{{product.samplesPoured}}</td>
+            <td>{{product.bottlesSold}}</td>
+            <td>{{product.regularPrice | currency:'USD':true:'2.2-2'}}</td>
+            <td>{{product.demoPrice | currency:'USD':true:'2.2-2'}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <h6>Event Feedback</h6>
+  <hr />
+  <div class="row">
+    <div class="col-sm-12">
+      <blockquote *ngFor="let comment of recapState.recap.comments" class="blockquote">
+        <p class="m-b-0"><small>{{comment}}</small></p>
+      </blockquote>
+    </div>
+  </div>
+
+  <!-- <pre>this.recapState.state.recap = {{ recapState.state.recap | json }}</pre> -->
+</div>
+<div class="list-group-item">
+  <button (click)="showPrevious()" type="button" class="btn btn-secondary">Go Back</button>
+  <button (click)="showNext()" type="button" class="btn btn-primary">Submit</button>
+</div>
